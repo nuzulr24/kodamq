@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cek Khodam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        @keyframes textShine {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .shadow-md {
+            box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
+        }
+
+        .ri-custom {
+            font-size: 50px;
+            font-weight: bold;
+            margin: 5px;
+            background: linear-gradient(to right,
+                    #f9ce62 20%,
+                    #fa7725 30%,
+                    #f4653a 70%,
+                    #ff5454 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            background-size: 500% auto;
+            animation: textShine 5s ease-in-out infinite alternate;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            margin: 5px;
+            background: linear-gradient(to right,
+                    #f9ce62 20%,
+                    #fa7725 30%,
+                    #f4653a 70%,
+                    #ff5454 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            background-size: 500% auto;
+            animation: textShine 5s ease-in-out infinite alternate;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="mb-5">
+        <nav class="navbar navbar-expand-lg bg-white shadow-md">
+            <div class="container py-2 justify-content-center">
+                <a class="navbar-brand" href="#"><i class="ri-bard-fill"></i> Cek Khodam</a>
+            </div>
+        </nav>
+    </section>
+
+    <section class="mb-4 text-center">
+        <h4 class="fw-bold">Lacak Leluhur Kodam Kamu &#128123;</h4>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-md border-0">
+                    <div class="card-body">
+                        <div class="row g-3" style="margin-bottom: -16px">
+                            <div class="col">
+                                <input type="text" class="form-control py-3 px-3" id="inputNama"
+                                    placeholder="Nama Panggilan">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary bg-gradient mb-3 py-3 px-4 btn-magic"><i
+                                        class="ri-magic-fill text-white"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-center magic d-none">
+            <div class="col-md-6">
+                <div class="card shadow-md border-0">
+                    <div class="card-body">
+                        <div class="hasilKodam"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const data = {
+            "nama": [
+                "Anjing",
+                "Kucing",
+                "Gajah",
+                "Harimau",
+                "Jerapah",
+                "Singa",
+                "Kuda",
+                "Es Teh",
+                "Es Jeruk",
+                "Es Cincau",
+                "Es Campur",
+                "Wedang Jahe",
+                "Bajigur",
+                "Bandrek",
+                "Sekoteng",
+                "Es Doger",
+                "Es Teler",
+                "Es Kelapa Muda",
+                "Es Buah",
+                "Sari Asem",
+                "Sekoteng Betawi",
+                "Kopi Tubruk",
+                "Kopi Aceh",
+                "Kopi Toraja",
+                "Kopi Lampung",
+                "Kopi Jawa",
+                "Teh Tarik",
+                "Teh Poci",
+                "Teh Sereh",
+                "Wedang Ronde",
+                "Dawet",
+                "Nasi Goreng",
+                "Mie Goreng",
+                "Soto Ayam",
+                "Bakso",
+                "Gado-gado",
+                "Nasi Uduk",
+                "Nasi Padang",
+                "Ayam Penyet",
+                "Sate Ayam",
+                "Sate Kambing",
+                "Pecel Lele",
+                "Pecel Ayam",
+                "Rendang",
+                "Ayam Betutu",
+                "Ayam Taliwang",
+                "Pisang Goreng",
+                "Tahu Tek",
+                "Lontong Cap Go Meh",
+                "Rawon",
+                "Laksa",
+                "Bubur Ayam",
+                "Bubur Sumsum",
+                "Bubur Manado",
+                "Bubur Injin",
+                "Pempek",
+                "Zebra",
+                "Kelinci",
+                "Kambing",
+                "Domba",
+                "Sapi",
+                "Kerbau",
+                "Ayam",
+                "Bebek",
+                "Burung",
+                "Ikan",
+                "Kura-kura",
+                "Buaya",
+                "Kadal",
+                "Ular",
+                "Katak",
+                "Panda",
+                "Koala",
+                "Kanguru",
+                "Orangutan",
+                "Badak",
+                "Serigala",
+                "Kelelawar",
+                "Lumba-lumba",
+                "Paus",
+                "Hiu",
+                "Gurita",
+                "Bintang Laut",
+                "Kupu-kupu",
+                "Lebah",
+                "Laba-laba",
+                "Semut",
+                "Jangkrik",
+                "Belalang",
+                "Cicak",
+                "Tikus",
+                "Babi",
+                "Kambing Gunung",
+                "Rusa",
+                "Banteng",
+                "Macan Tutul",
+                "Kucing Hutan",
+                "Bunglon",
+                "Burung Hantu",
+                "Elang",
+                "Merpati",
+                "Penguin",
+                "Flamingo",
+                "Burung Beo",
+                "Burung Pelikan",
+                "Angsa",
+                "Bangau",
+                "Kakatua",
+                "Ostrich",
+                "Naga",
+                "Griffin",
+                "Phoenix",
+                "Unicorn",
+                "Pegasus",
+                "Minotaur",
+                "Cerberus",
+                "Kraken",
+                "Sphinx",
+                "Chimera",
+                "Hippogriff",
+                "Basilisk",
+                "Hydra",
+                "Manticore",
+                "Faun",
+                "Kelpie",
+                "Leviathan",
+                "Roc",
+                "Selkie",
+                "Sleipnir",
+                "Banshee",
+                "Wyvern",
+                "Pocong",
+                "Kuntilanak",
+                "Wewe Gombel",
+                "Genderuwo",
+                "Tuyul",
+                "Leak",
+                "Sundel Bolong",
+                "Jenglot",
+                "Banaspati",
+                "Palasik",
+                "Nyi Roro Kidul",
+                "Babi Ngepet",
+                "Suster Ngesot",
+                "Jerangkong",
+                "Beguganjang",
+                "Lampor",
+                "Siluman",
+                "Jelangkung",
+                "Kolor Ijo",
+                "Naga Merah",
+                "Pesulap Merah",
+            ]
+        };
+
+        const level = {
+            "tingkatan": [
+                "Biasa",
+                "Tidak Biasa",
+                "Rare",
+                "Epik",
+                "Legenda",
+                "Terbatas",
+                "Mythic",
+                "Unik",
+                "Ultra Rare",
+                "Exotic"
+            ]
+        };
+
+        const nama = data.nama;
+        const tingkatan = level.tingkatan;
+
+        $('.btn-magic').click(function () {
+            let name = $('input[type=text]').val();
+            if (!name) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Salah!',
+                    text: 'Mbah dukun lihat kamu tidak menulis yah! coba ulangi lagi nak',
+                })
+            } else {
+                $('.magic').removeClass('d-none');
+                let kodam = nama[Math.floor(Math.random() * nama.length)];
+                let jenis = tingkatan[Math.floor(Math.random() * tingkatan.length)];
+
+                $('.hasilKodam').html(`
+                    <div class="py-5">
+                        <h4 class="mb-3"><i class="ri-sparkling-2-fill ri-custom"></i></h4>
+                        Kodam ${name} <span class="fw-bold">${kodam} ${jenis}</span>
+                    </div>
+                `);
+            }
+        })
+    </script>
+</body>
+
+</html>
